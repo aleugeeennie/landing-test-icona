@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Confirmación de solicitud de mayoreo de Icona Sports.">
+  <title>Gracias | Icona Sports</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="thanks-body">
+  <main class="thanks-shell">
+    <section class="thanks-grid">
+      <div class="thanks-message">
+        <a class="thanks-logo" href="index.html" aria-label="Volver a Icona Sports">
+          <img src="assets/icona-logo.svg" width="190" height="52" alt="Icona Sports">
+        </a>
+        <p class="eyebrow">Solicitud recibida</p>
+        <h1>Tu lista de mayoreo está más cerca.</h1>
+        <p id="personalMessage">Recibimos tus datos. En un momento abriremos WhatsApp para continuar con tu solicitud.</p>
+
+        <div class="lead-summary" id="leadSummary" hidden>
+          <span>Paquete de interés</span>
+          <strong id="summaryPackage">—</strong>
+        </div>
+
+        <div class="thanks-actions">
+          <a class="btn btn-primary" id="manualWhatsApp" href="https://wa.me/123456789" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          <a class="btn thanks-secondary" href="index.html">Volver al inicio</a>
+        </div>
+        <p class="redirect-note">Redirección automática a WhatsApp en <strong><span id="countdown">1.8</span>s</strong>.</p>
+      </div>
+
+      <div class="calendly-panel">
+        <div class="calendly-heading">
+          <p class="eyebrow">Agenda tu llamada</p>
+          <h2>Elige un horario.</h2>
+          <p>Enlace temporal de Calendly para maquetación.</p>
+        </div>
+        <iframe
+          title="Calendly de Icona Sports"
+          src="https://calendly.com/icona-sports-demo/habla-con-un-asesor"
+          loading="eager"
+          allow="fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="thanks-footer">
+    <span>Icona Sports</span>
+    <a href="https://dinametra.com/" target="_blank" rel="noopener">Desarrollado por Dinametra.com</a>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const raw = sessionStorage.getItem("iconaLead");
+      let lead = {};
+      try { lead = raw ? JSON.parse(raw) : {}; } catch (_) {}
+
+      const packageName = lead.paquete || "mayoreo";
+      const firstName = lead.nombre ? lead.nombre.trim().split(/\s+/)[0] : "";
+      const greeting = firstName ? `${firstName}, recibimos tus datos.` : "Recibimos tus datos.";
+      document.getElementById("personalMessage").textContent =
+        `${greeting} En un momento abriremos WhatsApp para continuar con tu solicitud.`;
+
+      if (lead.paquete) {
+        document.getElementById("leadSummary").hidden = false;
+        document.getElementById("summaryPackage").textContent = lead.paquete;
+      }
+
+      const message = [
+        "Hola Icona Sports, quiero información de mayoreo.",
+        `Nombre: ${lead.nombre || "[sin nombre]"}`,
+        `Paquete: ${packageName}`,
+        `Teléfono: ${lead.telefono || "[sin teléfono]"}`
+      ].join("\n");
+
+      const waUrl = `https://wa.me/123456789?text=${encodeURIComponent(message)}`;
+      document.getElementById("manualWhatsApp").href = waUrl;
+
+      const countdown = document.getElementById("countdown");
+      const started = performance.now();
+      const duration = 1800;
+
+      const tick = (now) => {
+        const remaining = Math.max(0, duration - (now - started));
+        countdown.textContent = (remaining / 1000).toFixed(1);
+        if (remaining > 0) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+
+      window.setTimeout(() => {
+        window.location.href = waUrl;
+      }, duration);
+    })();
+  </script>
+</body>
+</html>

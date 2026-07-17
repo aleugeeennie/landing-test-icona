@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" role="img" aria-labelledby="title desc">
+  <title id="title">Icona Sports</title>
+  <desc id="desc">Wordmark deportivo de Icona Sports</desc>
+  <g fill="currentColor" transform="skewX(-10)">
+    <text x="12" y="92" font-family="Arial Black, Arial, sans-serif" font-size="102" font-weight="900" letter-spacing="-8">ICONA</text>
+    <text x="298" y="137" font-family="Arial Black, Arial, sans-serif" font-size="50" font-style="italic" font-weight="900" letter-spacing="-2">sports</text>
+  </g>
+</svg>
