@@ -24,7 +24,8 @@ FUNCIONALIDAD
 - Autoapertura al llegar al final del scroll
 - sessionStorage
 - Navegación real a Gracias.html
-- Calendly embebido
+- Calendly embebido (ruta inventada) 
+- Precios inventados falta esa información) 
 - Redirección automática a WhatsApp a los 1.8 segundos
 - FAQ con una sola respuesta abierta
 - Reviews en dos filas con animación opuesta y pausa al hover
@@ -35,8 +36,3 @@ Para un despliegue completamente autónomo, conviene descargar y optimizar esos 
 
 Dinametra — dinametra.com
 
-CAMBIOS V2
-- Reviews con retratos ilustrativos de stock.
-- Botón flotante con ícono Font Awesome de WhatsApp.
-- Copy comercial en sticker del hero y encabezado del popup.
-- Marquee continuo, más rápido y sin espacios en blanco.
